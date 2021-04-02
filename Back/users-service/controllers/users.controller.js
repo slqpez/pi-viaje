@@ -27,7 +27,8 @@ usersRouter.get("/:id", (req, res) => {
 });
 
 usersRouter.post("/", async (req, res) => {
-  const user = req.body;
+  try{
+    const user = req.body;
   const passwordHash = await bcrypt.hash(user.password,10)
 
   if (!user.username || !user.password) {
@@ -45,6 +46,11 @@ usersRouter.post("/", async (req, res) => {
   const savedUser = await newUser.save()
     res.json(savedUser);
     mongoose.connection.close()
+  }catch(e){
+    res.status(400).json("El usuario ya existe.")
+    mongoose.connection.close()
+  }
+  
  
 
  
