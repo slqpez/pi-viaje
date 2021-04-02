@@ -1,0 +1,8 @@
+PUT http://localhost:3002/api/users/6066652f1799a641e8c02ddc
+Content-Type: application/json
+
+{
+    "username": "kevinPR",
+    "name":"Kevin",
+    "password": "lakevinpass"
+}
