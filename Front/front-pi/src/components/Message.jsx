@@ -1,9 +1,11 @@
 import React from 'react'
+import "./Message.css"
 
-function Message({msg}) {
+function Message({msg, type}) {
     return (
         <div>
-            <p>{msg}</p>
+        {type==="succes"? <p className="succes">{msg}</p>:<p className="error">{msg}</p>}
+           
         </div>
     )
 }

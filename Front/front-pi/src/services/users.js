@@ -1,7 +1,10 @@
 import axios from 'axios'
 
-const baseUrlLogin = "http://localhost:3002/api/login"
-const baseUrlUsers = "http://localhost:3002/api/users"
+/* const baseUrlLogin = "https://pi-viaje.herokuapp.com/api/login"
+const baseUrlUsers = "https://pi-viaje.herokuapp.com/api/users" */
+ const baseUrlLogin = "http://localhost:3002/api/login"
+const baseUrlUsers = "http://localhost:3002/api/users" 
+
 
 const login = (username, password)=>{
    return  axios.post(baseUrlLogin, {

@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import LoginForm from "./components/LoginForm";
-import CreateAccForm from "./components/CreateAccForm"
+import LoginForm from "./components/LoginForm/LoginForm";
+import CreateAccForm from "./components/CreateAccForm/CreateAccForm"
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SesionPage from "./components/SesionPage";
