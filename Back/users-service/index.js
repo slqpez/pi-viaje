@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const cors = require('cors')
+const path = require('path');
 const usersRouter = require('./controllers/users.controller')
 const loginRouter = require('./controllers/login.controller')
 const bodyParser = require('body-parser')
@@ -9,6 +10,11 @@ require('dotenv').config()
 require('./DB/DBConnection.js')
 app.use(cors())
 
+
+app.use(favicon(__dirname + '/build/favicon.ico'));
+
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'build')));
 
 const PORT = process.env.PORT
 
