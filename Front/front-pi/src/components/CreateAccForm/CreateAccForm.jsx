@@ -21,10 +21,10 @@ function CreateAccForm() {
       .then((result) => {
         
         setNewUser(result.data);
-        setMessage({...message,msg:"Usuario creado exitosamente."})
+        setMessage({msg:"Usuario creado exitosamente.", type:"succes"})
         setEmptyCamps(true);
         setInterval(()=>{
-          window.location.assign("/login");
+          window.location.assign("#/login");
         },1400)
        
       })

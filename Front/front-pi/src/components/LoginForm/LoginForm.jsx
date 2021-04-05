@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import UsersService from "../../services/users";
 import Message from "../Message";
+import spinner from "./spinner.gif"
 import "./LoginForm.css"
 
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState({});
+  //const [user, setUser] = useState({});
   const [islogged, setIslogged] = useState(true);
+  const [showSpinner, setShowSpinner]= useState(false);
 
   function handleUsername(e) {
     setUsername(e.target.value);
@@ -19,15 +21,16 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShowSpinner(true)
     UsersService.login(username, password)
       .then((result) => {
-        setUser(result.data);
-        window.location.assign("./sesionpage");
+        //setUser(result.data);
+        window.location.assign(".#/sesionpage");
         
       })
       .catch(() => {
-      
         setIslogged(false);
+        setShowSpinner(false)
         setTimeout(() => {
           setIslogged(true);
         }, 3000);
@@ -58,7 +61,9 @@ function LoginForm() {
             <Message msg="El usuario o la contraseña no existen."></Message>
           ) : null}
         </form>
+        {showSpinner?<img  className="spinner" src={spinner} alt="spinner"></img>:null}
       </div>
+      
     </div>
   );
 }

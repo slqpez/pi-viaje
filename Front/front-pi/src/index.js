@@ -5,12 +5,12 @@ import App from "./App";
 import LoginForm from "./components/LoginForm/LoginForm";
 import CreateAccForm from "./components/CreateAccForm/CreateAccForm"
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, HashRouter } from "react-router-dom";
 import SesionPage from "./components/SesionPage";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <HashRouter>
       <Switch>
         <Route exact path="/">
           <App />
@@ -25,7 +25,7 @@ ReactDOM.render(
           <SesionPage />
         </Route>
       </Switch>
-    </Router>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
