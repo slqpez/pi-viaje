@@ -1,0 +1,47 @@
+.h2-login{
+    text-align: center;
+    color: #fff;
+
+}
+
+.form-login{
+    background-color:#fff;
+    width:500px;
+    max-width:auto;
+    margin:2em auto;
+    padding:2em;
+    display:flex;
+    flex-direction:column;
+    border-radius:10px;
+    
+}
+
+label{
+    display:block;
+    font-weight: bold;
+    font-size: .9em;
+}
+
+.login-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-login{
+    text-align:center;
+    background: var(--btn-color);
+    padding: 5px;
+    border-radius:8px;
+    font-weight: bold;
+    width: 50%;
+    margin-bottom: 1em;
+  }
+  
+  .btn-login:hover{
+    background: rgba(63, 207, 63, 0.9);
+  }
+  
+  .forgot-link{
+    font-size: .9em;
+  }
