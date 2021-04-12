@@ -52,11 +52,12 @@ function Header() {
         </h1>
       </div>
       <ul>
-        <li>
+      {isLogged?null:<li>
           <Link className="header-links" to="/register">
             Crear cuenta
           </Link>
-        </li>
+        </li>}
+        
 
         {isLogged ? (
           userLink()
