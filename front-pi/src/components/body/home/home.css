@@ -1,0 +1,40 @@
+.home-page{
+    display:flex;
+    align-items: center;
+    height:80vh;
+    width:100%;
+    overflow:hidden;
+    color:white;
+}
+
+.main-home{
+    width:50%;
+    padding        : .8em 3em;
+    position:relative;
+    top:-100px;
+    height:auto;
+    
+}
+
+.title-home{
+    font-size: 3.5em;
+    color: rgb(140, 187, 140);
+}
+
+.txt-home{
+    font-size: 1.3em;
+}
+
+.btn-home{
+    color:white;
+    font-size:1.2em;
+    background:rgb(36, 202, 36);
+    padding:10px;
+    border-radius: 5px;
+    margin-top: 2em;
+    display:inline-block;
+}
+
+.btn-home:hover{
+    background:rgba(36, 202, 36,.8)
+}

@@ -49,11 +49,13 @@ function Login() {
   };
 
   const responseGoogle = async (response) => {
-    
     try {
-      const res = await axios.post("https://pi-gest-viaje.herokuapp.com/user/google_login", {
-        tokenId: response.tokenId,
-      });
+      const res = await axios.post(
+        "https://pi-gest-viaje.herokuapp.com/user/google_login",
+        {
+          tokenId: response.tokenId,
+        }
+      );
 
       setUser({ ...user, err: "", success: res.data.msg });
       localStorage.setItem("rf_token", res.data.rf_token);
@@ -66,13 +68,16 @@ function Login() {
     }
   };
 
-  const responseFacebook= async (response)=>{
-
-    const {accessToken, userID} = response
+  const responseFacebook = async (response) => {
+    const { accessToken, userID } = response;
     try {
-      const res = await axios.post("https://pi-gest-viaje.herokuapp.com/user/face_login", {
-        accessToken, userID
-      });
+      const res = await axios.post(
+        "https://pi-gest-viaje.herokuapp.com/user/face_login",
+        {
+          accessToken,
+          userID,
+        }
+      );
 
       setUser({ ...user, err: "", success: res.data.msg });
       localStorage.setItem("rf_token", res.data.rf_token);
@@ -83,7 +88,7 @@ function Login() {
       err.response.data.msg &&
         setUser({ ...user, err: err.response.data.msg, success: "" });
     }
-  }
+  };
 
   return (
     <div className="login_page">
@@ -117,20 +122,25 @@ function Login() {
           <button type="submit" className="btn-login">
             INGRESAR
           </button>
-          <Link className="forgot-link" to="/forgot_password">
-            Olvidé mi contraseña.
-          </Link>
         </div>
 
         <p>
-          ¿Eres nuevo? <Link to="/register">Crea tu cuenta</Link>
+          ¿Eres nuevo?{" "}
+          <Link className="link-register" to="/register">
+            Crea tu cuenta
+          </Link>
         </p>
+
+        <Link className="forgot-link" to="/forgot_password">
+          Olvidé mi contraseña.
+        </Link>
       </form>
 
       <div className="hr">O ingresa con otra cuenta</div>
 
       <div className="social">
         <GoogleLogin
+          className="google"
           clientId="619443560297-gc5stc95cck4lbuu07ecvappr6g2ra0c.apps.googleusercontent.com"
           buttonText="Ingresar con Google"
           onSuccess={responseGoogle}
@@ -138,6 +148,7 @@ function Login() {
         />
 
         <FacebookLogin
+          cssClass="face"
           appId="3102371846658493"
           autoLoad={false}
           textButton="Ingresar con Facebook"

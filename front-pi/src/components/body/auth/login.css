@@ -1,7 +1,17 @@
 .h2-login{
     text-align: center;
-    color: #fff;
+    color: rgb(140, 187, 140);
 
+}
+
+
+.login_page{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  
 }
 
 .form-login{
@@ -39,9 +49,47 @@ label{
   }
   
   .btn-login:hover{
-    background: rgba(63, 207, 63, 0.9);
+    background: rgba(54, 190, 54, 0.9);
   }
   
   .forgot-link{
     font-size: .9em;
+    text-align: left;
+    color: rgb(204, 38, 38);
+    font-size: 1em;
+    margin-top: 1em;
+  }
+
+  .link-register{
+    color:rgba(54, 190, 54, 0.9);
+    font-weight: bold;
+  }
+
+  .hr{
+    color:white;
+    font-size: 1.2em;
+  }
+
+  .social{
+    margin-top: 1em;
+    display: flex;
+    gap:10px;
+  }
+
+  .google{
+    height: 50px;
+  }
+
+  .face{
+    height: 50px;
+    background-color: #3A5795;
+    color:white;
+    width:auto;
+    font-size: 1.1em;
+    padding:10px;
+    
+  }
+
+  .face:hover{
+    background-color:#5778be;
   }

@@ -94,7 +94,7 @@ function Register() {
         <div className="login-cf_password-section">
           <label htmlFor="cf_password">Confirma tu contraseña</label>
           <input
-            type="cf_password"
+            type="password"
             placeholder="Confirma tu contraseña"
             id="cf_password"
             value={cf_password}
@@ -109,7 +109,7 @@ function Register() {
           
         </div>
 
-        <p>¿Ya tienes cuenta? <Link to ="/login">Ingresar</Link></p>
+        <p>¿Ya tienes cuenta? <Link className="link-register" to ="/login">Ingresar</Link></p>
       </form>
       
     </div>
