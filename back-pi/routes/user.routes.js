@@ -18,7 +18,7 @@ router.post('/reset', auth,  userController.resetPassword)
 
 router.get('/info', auth,  userController.getUserInfo)
 
-router.get('/all_info', auth, authAdmin,  userController.getUsersAllInfo)
+router.get('/all_info', /* auth, authAdmin,  */ userController.getUsersAllInfo)
 
 router.get('/logout',  userController.logout)
 

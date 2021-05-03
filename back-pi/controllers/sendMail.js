@@ -20,7 +20,7 @@ const oauth2Client = new OAuth2(
 
 )
 
-const sendEmail = (to, url, txt)=>{
+const sendEmail = (to, url, txt, msg)=>{
     oauth2Client.setCredentials({
         refresh_token: MAILING_SERVICE_REFRESH_TOKEN
     })
@@ -43,12 +43,13 @@ const sendEmail = (to, url, txt)=>{
             to: to,
             subject: "Kesesa",
             html: `
-            <p>Gracias por creear una cuenta con nosotros</p>
-            <br/>
-            <p>Solo tienes que darle click al botón de abajo, para confirmar tu email y poder empezar a usar nuestro servicio</p>
+            <div style="width:50%; background:grey;margin:10px auto; text-align:center;border-radius:5px; padding:8px;"> 
 
-            <a href=${url}>${txt}</a>
-            
+            <h1 style="color:black">Gracias por ser parte de nosotros</h1>
+                        <br/>
+                        <p>${msg}</p>
+                        <a href=${url}>${txt}</a>
+            </div>
             `
         }
         smtpTransport.sendMail(mailOptions, (err,info)=>{

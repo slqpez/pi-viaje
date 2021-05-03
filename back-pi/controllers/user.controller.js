@@ -37,9 +37,9 @@ const userController ={
                 const activation_token = createActivationToken(newUser)
 
                 const url = `${CLIENT_URL}/user/activate/${activation_token}`
-                sendMail(email, url, "Verificar cuenta")
+                sendMail(email, url, "Verificar cuenta", "Solo tienes que ingresar al link de abajo, para empezar tu viaje.")
                
-
+               
                 res.json({msg:"!Usuario registrado! Por favor activa tu email para continuar."})
             }catch(err){
                 return res.status(500).json({msg:err.message})
@@ -50,7 +50,7 @@ const userController ={
                 const {activation_token} = req.body
                 const user = jwt.verify(activation_token, process.env.ACTIVATION_TOKEN_SECRET )
 
-                console.log(user)
+            
                 const {username, email, password} = user
 
                 const check = await Users.findOne({email})
@@ -60,7 +60,8 @@ const userController ={
                     username, email, password
                 })
 
-                await newUser.save()
+                const saved = await newUser.save()
+                console.log(saved)
 
                 res.json({msg: "La cuenta ha sido activada satisfactoriamente."})
 
@@ -124,7 +125,7 @@ const userController ={
                 const access_token = createAccessToken({id:user._id})
                 const url = `${CLIENT_URL}/user/reset/${access_token}`
 
-                sendMail(email, url, "Reestablecer contraseña")
+                sendMail(email, url, "Reestablecer contraseña", "Dale click al link de abajo para que puedas cambiar tu contraseña.")
                 res.json({msg: "Se te envió un correo para reestablecer la contraseña."})
 
             } catch (err) {
@@ -156,8 +157,9 @@ const userController ={
         },
         getUsersAllInfo: async (req,res)=>{
             try {
-                console.log(req.user)
+                
                 const users = await Users.find().select('-password')
+                
                 res.json(users)
             } catch (err) {
                 return res.status(500).json({msg:err.message})

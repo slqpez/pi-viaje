@@ -9,6 +9,7 @@ const path = require('path')
 
 const userRouter = require("./routes/user.routes")
 const uploadRouter = require('./routes/upload.routes')
+const documentRouter = require("./routes/document.routes")
 
 
 
@@ -35,12 +36,14 @@ app.get('/*', function (req, res) {
 
 app.use("/user", userRouter)
 app.use("/api", uploadRouter)
+app.use("/document", documentRouter)
 
 app.get("/", (req, res)=>{
     res.send("Back PI")
 })
 
 const PORT = process.env.PORT 
+console.log(PORT)
 
 app.listen(PORT, ()=>{
     console.log(`Server running on http://localhost:${PORT}`)
