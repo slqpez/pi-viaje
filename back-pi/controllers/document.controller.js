@@ -11,6 +11,7 @@ cloudinary.config({
 })
 
 
+
 const documentController ={
 
     saveDocuement:  (req, res)=>{
@@ -39,7 +40,7 @@ const documentController ={
                    const savedDocument= await newDocument.save()
                    console.log(savedDocument)
                     
-                   user.notes=  user.notes.concat(savedDocument._id)
+                   user.documents=  user.documents.concat(savedDocument._id)
                     console.log(user)
     
                     await user.save()
@@ -61,6 +62,17 @@ const documentController ={
         } catch (err) {
             return res.status(500).json({msg: err.message})
         } 
+    },
+
+    getDocuments: async (req,res)=>{
+        try {
+                
+            const documents = await Documents.find()
+            
+            res.json(documents)
+        } catch (err) {
+            return res.status(500).json({msg:err.message})
+        }
     }
 }
 

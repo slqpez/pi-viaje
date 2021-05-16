@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
         default: "https://res.cloudinary.com/slqpez/image/upload/v1617846108/user_k1v8d4.png"
         
     },
-    notes:[{
+    documents:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Document",
     }]

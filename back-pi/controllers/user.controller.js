@@ -158,7 +158,7 @@ const userController ={
         getUsersAllInfo: async (req,res)=>{
             try {
                 
-                const users = await Users.find().select('-password')
+                const users = await Users.find({}).select('-password').populate('documents')
                 
                 res.json(users)
             } catch (err) {

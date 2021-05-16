@@ -2,9 +2,7 @@ const router = require('express').Router()
 const documentController = require('../controllers/document.controller')
 
 
-router.get("/", (req,res)=>{
-    res.send("Holita")
-})
+router.get("/getAll", documentController.getDocuments)
 
 router.post("/save", documentController.saveDocuement)
 
