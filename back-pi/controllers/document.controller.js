@@ -25,18 +25,28 @@ const documentController ={
                  try {
                     const file = result.secure_url
                     
-                    const newDocument = new Documents({
-                        name, file
-                    })
-                    console.log(newDocument)
+                  
 
-                    const user = Users.findById(userId)
-                    console.log(user)
+                    const user =  await Users.findById(userId)
+
+                    const newDocument = new Documents({
+                        name, file, userId: user._id
+                    })
+                
+                  
+                   
  
-                    await newDocument.save()
+                   const savedDocument= await newDocument.save()
+                   console.log(savedDocument)
+                    
+                   user.notes=  user.notes.concat(savedDocument._id)
+                    console.log(user)
     
-                    await newUser.save()
-                    res.json({url: result.secure_url})
+                    await user.save()
+                    
+            
+                    
+                    res.json({savedDocument})
 
                  } catch (err) {
                     removeTmp(file.tempFilePath)
