@@ -1,11 +1,13 @@
 import React, {useState, useEffect}from 'react'
 import "./documents.css"
+import axios from "axios"
+import { useSelector, useDispatch } from "react-redux";
 
 
 
 function Documents() {
 
-
+    const auth = useSelector((state) => state.auth);
     const [name, setName] = useState("")
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -16,11 +18,31 @@ function Documents() {
         setSelectedFile(e.target.files[0])
     }
 
-    const addDocument=(e)=>{
+    const addDocument= async (e)=>{
+      const userId = auth.user._id
         e.preventDefault();
         /* try { */
           ;
-          console.log(selectedFile)
+      let formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("name", name);
+      formData.append("userId", userId);
+
+
+         
+
+       const res = await axios.post(
+        "https://pi-gest-viaje.herokuapp.com/document/save",
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            //Authorization: token,
+          },
+        }
+      ); 
+
+      console.log(res)
           /* if (!file)
             return setData({
               ...data,
